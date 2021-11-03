@@ -1,0 +1,23 @@
+#zadanie 1
+update postac set wiek=88 where nazwa= "Tesciowa";
+
+#zadanie 2 
+create table walizka (id_walizki int auto_increment primary key, pojemnosc int unsigned, kolor enum("rozowy","czerwony","teczowy","zolty"), id_wlasciciela int, foreign key (id_wlasciciela) references postac (id_postaci) on delete cascade);
+
+alter table walizka alter kolor set default "rozowy";
+
+insert into walizka values(default,  60, "zolty", 1), (default, 50, "czerwony", 3);
+
+#zadanie 3
+create table izba (adres_budynku varchar(40), nazwa_izby varchar(40),  metraz int unsigned, wlasciciel int, foreign key (wlasciciel) references postac (id_postaci) on delete set null, primary key(adres_budynku, nazwa_izby));
+
+alter table izba add column kolor_izby varchar(15) after metraz;
+
+alter table izba alter kolor_izby set default "czarny";
+
+insert into izba values ("brodnica", "spizarnia", 100,"czarny",1);
+
+#zadanie 4
+create table przetwory (id_przetworu int primary key,  rok_produkcji int(4)  default 1654, id_wykonawcy int, foreign key (id_wykonawcy) references postac (id_postaci), zawartosc varchar(20), dodatek varchar(20)  default "papryczka chilli", id_konsumenta int, foreign key(id_konsumenta) references postac (id_postaci));
+
+insert into przetwory values(1, 1100, 1, "bigos",default, 3);
