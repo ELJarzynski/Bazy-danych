@@ -21,3 +21,34 @@ insert into izba values ("brodnica", "spizarnia", 100,"czarny",1);
 create table przetwory (id_przetworu int primary key,  rok_produkcji int(4)  default 1654, id_wykonawcy int, foreign key (id_wykonawcy) references postac (id_postaci), zawartosc varchar(20), dodatek varchar(20)  default "papryczka chilli", id_konsumenta int, foreign key(id_konsumenta) references postac (id_postaci));
 
 insert into przetwory values(1, 1100, 1, "bigos",default, 3);
+
+
+#zadanie 5
+insert into postac value(default,"Ragnar","wiking","1105.05.05",45),(default,"Rollo","wiking","1100.05.12",50),(default,"Lagherta","wiking","1120.02.05",30),(default,"Thor","wiking","1110.05.06",40),(default,"Rock","wiking","1111.06.05",39),
+
+create table statek(nazwa_statku varchar(45) primary key, rodzaj_statku enum("Galeon","Gallera"),data_wodowania date, max_ladownosc int unsinged)
+
+insert into statek values("Czarna_perla","Galeon","1150.05.05",50),("Kawka","Gallera","1150.05.05",30);
+
+alter table postac add column funkcja varchar(15) after rodzaj;
+
+update postac set funkcja= "kapitan" where nazwa= "Bjorn";
+
+dodanie kolumy
+alter table postac add column statek varchar(40) 
+dodanie klucza
+alter table postac add foreign key(statek) references statek(nazwa_statku);
+
+update postac set statek= "kawka" where nazwa = "Bjorn";
+update postac set statek= "kawka" where nazwa = "Drozd"
+update postac set statek= "kawka" where nazwa = "Tesciowa"
+update postac set statek= "kawka" where nazwa = "Rollo"
+update postac set statek= "kawka" where nazwa = "Ragnar
+update postac set statek= "czarna_perla" where nazwa = "Lagherta"
+update postac set statek= "czarna_perla" where nazwa = "Rock"
+
+delete from izba where nazwa_izby="spizarnia";
+
+Drop table izba;
+
+
