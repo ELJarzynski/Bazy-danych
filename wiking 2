@@ -25,6 +25,31 @@ select nazwa from postac where nazwa like '%A%';
 update postac set statek="kawka" where nazwa LIKE '%A%';
 update statek set max_ladownosc=max_ladownosc*0.7 where data_wodowania > "1000-01-01";
 
+#Zadanie 4
+insert into postac values(22,"Loko",default,1100-03-01, 59, default,default,12345678981)
+
+create table marynarz like postac;
 
 
+insert into marynarz select * from postac where statek is not null;
 
+alter table marynarz add foreign key (statek) references statek(nazwa_statku);
+
+# Zadanie 5
+
+update postac set statek = default where statek is not null;
+
+delete from postac where nazwa = "Lagertha";
+
+alter table postac drop foreign key postac_ibfk_1;
+
+alter table marynarz drop foreign key marynarz_ibfk_1;
+
+
+truncate table statek;
+
+drop table statek;
+
+create table zwierz (id int primary key auto_increment, nazwa varchar(45), wiek int);
+
+insert into  zwierz select id_postaci, nazwa, wiek  from postac where rodzaj = "syrena" or rodzaj = "ptak" or rodzaj is null;
