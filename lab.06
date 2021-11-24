@@ -28,5 +28,3 @@ where idKreatury is not NULL);
 
 Zadanie 4
 select k.nazwa,z.nazwa from kreatura k  natural  JOIN ekwipunek e  INNER JOIN zasob z ON e.idZasobu=z.idZasobu where year(k.dataUr) between 1670 and 1680;
-
-select k.nazwa, z.nazwa from kreatura k natural join ekwipunek e  INNER JOIN zasob z ON e.idZasobu=z.idZasobu where z.rodzaj = "jedzenie";
