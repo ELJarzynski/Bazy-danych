@@ -1,0 +1,32 @@
+Zadanie 1
+select avg(waga) from kreatura where rodzaj = "wiking";
+
+select rodzaj, avg(waga), count(rodzaj) from kreatura group by rodzaj;
+
+select rodzaj, dataUr, avg(year(now()) - year (dataUr) from kreatura group by rodzaj;
+
+Zadanie 2
+select rodzaj,sum(waga) from zasob group by rodzaj;
+
+select nazwa, avg(waga) from zasob where ilosc >=4 group by nazwa  having avg(waga) > 10;
+
+select rodzaj, count(distinct nazwa) from zasob group by rodzaj having min(ilosc) > 1; 
+
+Zadanie 3
+select nazwa, sum(ilosc) from kreatura k inner join ekwipunek e on k.idKreatury=e.idKreatury group by nazwa;
+
+select k.nazwa,z.nazwa from kreatura k INNER JOIN ekwipunek e ON k.idKreatury=e.idKreatury INNER JOIN zasob z ON e.idZasobu=z.idZasobu;
+
+~left join
+select k.nazwa, k.idKreatury, e.idKreatury from kreatura k
+LEFT JOIN ekwipunek e ON k.idKreatury=e.idKreatury
+where e.idKreatury is NULL;
+~podzapytanie
+select idKreatury from kreatura where idKreatury not in
+(select distinct idKreatury from ekwipunek
+where idKreatury is not NULL);
+
+Zadanie 4
+select k.nazwa,z.nazwa from kreatura k  natural  JOIN ekwipunek e  INNER JOIN zasob z ON e.idZasobu=z.idZasobu where year(k.dataUr) between 1670 and 1680;
+
+select k.nazwa, z.nazwa from kreatura k natural join ekwipunek e  INNER JOIN zasob z ON e.idZasobu=z.idZasobu where z.rodzaj = "jedzenie";
