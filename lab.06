@@ -26,14 +26,14 @@ select idKreatury from kreatura where idKreatury not in
 (select distinct idKreatury from ekwipunek
 where idKreatury is not NULL);
 
-#Zadanie 4
+Zadanie 4
 select k.nazwa,z.nazwa from kreatura k  natural  JOIN ekwipunek e  INNER JOIN zasob z ON e.idZasobu=z.idZasobu where year(k.dataUr) between 1670 and 1680;
 
 select * from kreatura k inner join ekwipunek e on k.idKreatury=e.idKreatury inner join zasob z on e.idZasobu=z.idZasobu where z.rodzaj = 'jedzenie' order by k.dataUr desc limit 5;
 
 select k.nazwa, k2.nazwa from kreatura k  inner join kreatura k2 on k2.idKreatury - k.idKreatury = 5;
 
-#Zadanie 5
+Zadanie 5
 select k.rodzaj, sum(e.ilosc), avg(e.ilosc*z.waga) from kreatura k 
 inner join ekwipunek e on k.idKreatury = e.idKreatury 
 inner join zasob z on e.idZasobu=z.idZasobu 
