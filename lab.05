@@ -1,3 +1,6 @@
+"xyz%" - nazwa zaczyna się
+"%xyz" - nazwa kończy się na
+
 #Zadanie 1
 Create table kreatura select * from wikingowie.kreatura;
 
