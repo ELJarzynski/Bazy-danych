@@ -28,7 +28,7 @@ select dataUr, nazwa from kreatura order by dataUr asc limit 5;
 
 select distinct rodzaj from zasob;
 
-select concat (nazwa," - ",rodzaj) from kreatura where rodzaj like "wi%";
+select concat (nazwa," - ",rodzaj) from kreatura where rodzaj like "%wi%";
 
 select concat(nazwa," - ",waga,' ',ilosc) from zasob where year(datapozyskania) between 2000 and 2007;
 
