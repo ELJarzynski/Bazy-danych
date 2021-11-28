@@ -33,8 +33,8 @@ select concat (nazwa," - ",rodzaj) from kreatura where rodzaj like "%wi%";
 select concat(nazwa," - ",waga,' ',ilosc) from zasob where year(datapozyskania) between 2000 and 2007;
 
 #Zadanie 5
-a)
+select concat ("waga netto - ", waga * 0.7, " odpatki - ", waga*0.3)  from zasob; 
 
-b) select nazwa from zasob where rodzaj is null;
+select nazwa from zasob where rodzaj is null;
 
-C)
+select distinct nazwa from zasob where nazwa like "Ba%" and nazwa like "%os" order by nazwa;
