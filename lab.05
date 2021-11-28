@@ -26,7 +26,7 @@ select dataUr, nazwa from kreatura order by dataUr asc limit 5;
 
 #Zadanie 4
 
-select distinct rodzaj from kreatura;
+select distinct rodzaj from zasob;
 
 select concat (nazwa," - ",rodzaj) from kreatura where rodzaj like "wi%";
 
