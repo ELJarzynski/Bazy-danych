@@ -7,7 +7,7 @@ Create table ekwipunek select * from wikingowie.ekwipunek;
 
 select nazwa  month(datapozyskania from zasob where rodzaj = "jedzenie";
 
-select idZasobu, nazwa from zasob where idZasobu IN(3,5,7);
+select idZasobu, nazwa from zasob where idZasobu IN(1,3,5);
 
 #Zadanie 2
 
