@@ -8,7 +8,7 @@ select rodzaj, dataUr, avg(year(now()) - year (dataUr) from kreatura group by ro
 Zadanie 2
 select rodzaj,sum(waga) from zasob group by rodzaj;
 
-select nazwa, avg(waga) from zasob where ilosc >=4 group by nazwa  having avg(waga) > 10;
+select nazwa, avg(waga) from zasob where ilosc >=4 group by nazwa  having sum(waga) > 10;
 
 select rodzaj, count(distinct nazwa) from zasob group by rodzaj having min(ilosc) > 1; 
 
