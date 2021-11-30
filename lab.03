@@ -29,7 +29,7 @@ update statek set max_ladownosc=max_ladownosc*0.7 where year(data_wodowania) bet
 insert into postac values(22,"Loko",default,1100-03-01, 59, default,default,12345678981)
 
 create table marynarz like postac;
-
+alter table marynarz set primary key(Id_postaci);
 
 insert into marynarz select * from postac where statek is not null;
 
