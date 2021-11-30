@@ -12,9 +12,8 @@ alter table postac Modify id_postaci int;
 alter table postac drop primary key
 
 #zadanie 2
-alter table postac modify pesel char(11);
-alter table postac add column pesel varchar(11) after wiek;
-ALTER TABLE postac MODIFY pesel int;
+alter table postac add column pesel char(11) after wiek;
+update postac set primary key(pesel);
 ALTER TABLE postac MODIFY rodzaj enum("wiking","ptak","kobieta","syrenka");
 update postac set pesel=12345678901 + id_postaci;
 insert into postac value(default,"Gertruda Niszczera","syrenka","1000.05.05",150,"12345678901","kawka");
