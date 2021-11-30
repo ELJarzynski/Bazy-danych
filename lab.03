@@ -23,7 +23,7 @@ insert into postac value(default,"Gertruda Niszczera","syrenka","1000.05.05",150
 select nazwa from postac where nazwa like '%A%';
 
 update postac set statek="kawka" where nazwa LIKE '%A%';
-update statek set max_ladownosc=max_ladownosc*0.7 where data_wodowania > "1000-01-01";
+update statek set max_ladownosc=max_ladownosc*0.7 where year(data_wodowania) between 1000 and 1099;
 
 #Zadanie 4
 insert into postac values(22,"Loko",default,1100-03-01, 59, default,default,12345678981)
