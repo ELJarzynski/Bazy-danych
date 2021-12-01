@@ -1,4 +1,5 @@
 Zadanie 1
+
 select avg(waga) from kreatura where rodzaj = "wiking";
 
 select rodzaj, avg(waga), count(rodzaj) from kreatura group by rodzaj;
