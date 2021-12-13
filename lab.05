@@ -40,4 +40,4 @@ select concat ("waga netto - ", waga * 0.7,' -', " odpatki - ", waga*0.3)  from 
 
 select nazwa from zasob where rodzaj is null;
 
-select distinct nazwa from zasob where nazwa like "Ba%" and nazwa like "%os" order by nazwa;
+select distinct rodzaj from zasob where nazwa like "%Ba" and nazwa like "os%" order by nazwa asc;
