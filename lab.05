@@ -10,7 +10,7 @@ Create table ekwipunek select * from wikingowie.ekwipunek;
 
 select nazwa from zasob where rodzaj='jedzenie';
 
-select idZasobu, nazwa from zasob where idZasobu IN(1,3,5);
+select k.nazwa,idzasobu,ilosc from zasob z inner join kreatura k on k.idkreatury=z.idzasobu where idkreatury in(1,3,5);
 
 #Zadanie 2
 
