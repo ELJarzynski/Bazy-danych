@@ -21,7 +21,7 @@ select nazwa from zasob where waga between 2 and 5;
 select nazwa from kreatura where nazwa like "%or%" and udzwig between 30 and 70;
 
 #Zadanie 3
-select nazwa from zasob where month(datapozyskania) = 7 or month(datapozyskania) = 8;
+select nazwa from zasob where month(datapozyskania) in(7,8);
 
 select nazwa from zasob where rodzaj is not null order by waga asc;
 
