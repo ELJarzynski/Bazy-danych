@@ -25,7 +25,7 @@ select nazwa from zasob where month(datapozyskania) in(7,8);
 
 select nazwa from zasob where rodzaj is not null order by waga asc;
 
-select dataUr, nazwa from kreatura order by dataUr asc limit 5;
+select dataUr, nazwa from kreatura order by dataUr dasc limit 5;
 
 #Zadanie 4
 
