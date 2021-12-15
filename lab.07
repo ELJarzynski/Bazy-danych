@@ -21,3 +21,13 @@ left join etapy_wyprawy ew on s.id_sektora = ew.sektor group by s.id_sektora;
  
 select k.idKreatury, if(count(u.id_wyprawy)>0 ,"bral udzial","nie bral") from   uczestnicy u
 left join kreatura k on k.idKreatury=u.id_uczestnika group by id_uczestnika;
+
+zadanie 4
+select w.nazwa, sum(length(w.dziennik)) from wyprawa w inner join etapy_wyprawy
+
+select w.nazwa, count(distinct(u.id_uczestnika)), sum(e.ilosc*z.waga)/count(distinct(u.id_uczestnika)) as "avg waga" from wyprawa  w 
+left join uczestnicy u on w.id_wyprawy=u.id_wyprawy
+left join kreatura k on u.id_uczestnika=k.idKreatury 
+left join ekwipunek e on k.idKreatury=e.idKreatury
+left join zasob z on e.idzasobu=z.idzasobu
+group by nazwa;
