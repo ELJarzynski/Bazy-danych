@@ -6,8 +6,8 @@ select w.nazwa, sum(e.ilosc) from wyprawa
 inner join uczestnicy u on w.id_wyprawy=u.id_wyprawy 
 inner join ekwipunek e on u.id_uczestnika=e.idKreatury
 group by w.id_wyprawy;
-#Zadanie 2
- select w.nazwa, count(id_uczestnika), group_concat(k.nazwa) from wyprawa w inner join uczestnicy  u on w.id_wyprawy=u.id_wyprawy inner join kreatura k on k.idKreatury=u.id_uczestnika group by w.id_wyprawy;
+zadanie 2
+select w.nazwa, count(id_uczestnika), group_concat(k.nazwa) from wyprawa w inner join uczestnicy  u on w.id_wyprawy=u.id_wyprawy inner join kreatura k on k.idKreatury=u.id_uczestnika group by w.id_wyprawy;
  
 select ew.idEtapu, w.nazwa, w.data_rozpoczecia, k.nazwa, ew.kolejnosc  from kreatura k
 inner join wyprawa w on w.kierownik=k.idKreatury
@@ -15,7 +15,7 @@ inner join etapy_wyprawy ew on  ew.idWyprawy=w.id_wyprawy
 inner join sektor s on ew.sektor=s.id_sektora 
 order  by w.data_rozpoczecia, ew.kolejnosc;
  
-#Zadanie 3
+zadanie 3
 select s.nazwa, ifnull(count(ew.sektor),0) from sektor s
 left join etapy_wyprawy ew on s.id_sektora = ew.sektor group by s.id_sektora;
  
