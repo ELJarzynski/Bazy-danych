@@ -31,3 +31,10 @@ left join kreatura k on u.id_uczestnika=k.idKreatury
 left join ekwipunek e on k.idKreatury=e.idKreatury
 left join zasob z on e.idzasobu=z.idzasobu
 group by nazwa;
+
+zadanie 5
+select k.nazwa, datediff(w.data_rozpoczecia, k.dataUr) AS wiek from wyprawa AS w
+join uczestnicy AS u ON w.id_wyprawy = u.id_wyprawy
+join kreatura AS k ON u.id_uczestnika = k.idKreatury
+join etapy_wyprawy AS ew ON w.id_wyprawy=ew.idWyprawy
+where ew.sektor = 7;
