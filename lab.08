@@ -1,0 +1,23 @@
+zadanie 1
+select nazwisko from pracownik order by nazwisko asc;
+
+zadanie 2 
+select imie, nazwisko, pensja from pracownik where data_urodzenia> 1979;
+
+zadanie 3
+select * from pracownik where pensja between 3500 and 5000;
+
+zadanie 4
+select towar from stan_magazynowy where ilosc>10;
+
+zadanie 5
+select nazwa_towaru from towar where nazwa_towaru like "A%" and "B%" and"C%";
+
+zadanie 6
+select nazwa_krotka from klient where czy_firma=0; 
+
+zadanie 7 
+select id_zamowienia from zamowienie order by data_zamowienia desc; 
+
+zadanie 8 
+select imie, pensja from pracownik order by pensja asc limit 5;
