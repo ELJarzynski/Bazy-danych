@@ -25,12 +25,12 @@ left join uczestnicy u on u.id_uczestnika=k.idKreatury;
 zadanie 4
 select idWyprawy, sum(length(dziennik)) suma_dlugosci from etapy_wyprawy group by idWyprawy having suma_dlugosci<400;
 
-select w.nazwa, count(distinct(u.id_uczestnika)), sum(e.ilosc*z.waga)/count(distinct(u.id_uczestnika)) as "avg waga" from wyprawa  w 
+select w.nazwa, sum(e.ilosc*z.waga)/count(distinct u.id_uczestnika) from wyprawa w 
 left join uczestnicy u on w.id_wyprawy=u.id_wyprawy
-left join kreatura k on u.id_uczestnika=k.idKreatury 
-left join ekwipunek e on k.idKreatury=e.idKreatury
+left join kreatura k on u.id_uczestnika=k.idkreatury
+left join ekwipunek e on k.idkreatury=e.idkreatury
 left join zasob z on e.idzasobu=z.idzasobu
-group by nazwa;
+group by w.nazwa;
 
 zadanie 5
 select k.nazwa, datediff(w.data_rozpoczecia, k.dataUr)/365 AS wiek from wyprawa AS w
