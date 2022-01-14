@@ -1,31 +1,31 @@
-1.
+zadanie 1
 Select imie, nazwisko, d.nazwa from pracownik p inner join dzial d on p.dzial=d.id_dzialu;
 
-2.
+zadanie 2
 select t.nazwa_towaru, k.nazwa_kategori, s.ilosc from towar t inner join stan_magazynowy s on t.id_towaru=s.towar inner join kategoria k on t.id_towaru=id_kategori order by s.ilosc desc;
 
-3.
+zadanie 3
 select * from zamowienie z inner join status_zamowienia s on z.id_zamowienia=s.id_statusu_zamowienia where nazwa_statusu_zamowienia='anulowane';
 
-4.
+zadanie 4
 select * from klient k inner join adres_klienta a on k.id_klienta=a.klient where miejscowosc='Olsztyn'; 
 
-5.
+zadanie 5
 select  distinct(j.nazwa) from jednostka_miary j left join stan_magazynowy s on s.jm=j.id_jednostki;  POPRAW
 
-6.
+zadanie 6
 select z.numer_zamowienia, nazwa_towaru, p.ilosc, p.cena from zamowienie z inner join pozycja_zamowienia p on z.id_zamowienia=p.zamowienie inner join towar t on p.towar=t.id_towaru where year(z.data_zamowienia)=2018;
 
-7.
+zadanie 7
 
 
-8.
+zadanie 98
 select * from pozycja_zamowienia p inner join zamowienie z on p.zamowienie=z.id_zamowienia order by data_zamowienia asc limit 10;
 
-9.
+zadanie 9
 select * from zamowienie z inner join status_zamowienia s on z.status_zamowienia=s.id_statusu_zamowienia where nazwa_statusu_zamowienia!='zrealizowane';
 
-10.
+zadanie 10
 select * from adres_klienta where kod like '__-___';
 
 regexp '[0-9]{2}-[0-9]{3}';
