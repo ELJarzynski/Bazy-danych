@@ -21,3 +21,15 @@ select id_zamowienia from zamowienie order by data_zamowienia desc;
 
 zadanie 8 
 select imie, pensja from pracownik order by pensja asc limit 5;
+
+zadanie 9
+select * from towar where nazwa_towaru not like '%a%' order by cena_zakupu desc limit 10;
+
+zadanie10
+
+zadanie 11
+Create table towary_powyżej_100 select * from towar where cena_zakupu >=100;
+
+zadanie 12
+Create table pracownik_50_plus like pracownik;
+Insert into pracownik_50_plus select * from pracownik where (year(now())- year(data_urodzenia)) >= 50;
