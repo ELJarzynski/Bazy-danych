@@ -1,29 +1,51 @@
 zadanie 1
-Select imie, nazwisko, d.nazwa from pracownik p inner join dzial d on p.dzial=d.id_dzialu;
+Select imie, nazwisko, d.nazwa from pracownik 
+p inner join dzial d on p.dzial=d.id_dzialu;
 
 zadanie 2
-select t.nazwa_towaru, k.nazwa_kategori, s.ilosc from towar t inner join stan_magazynowy s on t.id_towaru=s.towar inner join kategoria k on t.id_towaru=id_kategori order by s.ilosc desc;
+select t.nazwa_towaru, k.nazwa_kategori, s.ilosc from towar t
+inner join stan_magazynowy s on t.id_towaru=s.towar 
+inner join kategoria k on t.id_towaru=id_kategori
+order by s.ilosc desc;
 
 zadanie 3
-select * from zamowienie z inner join status_zamowienia s on z.id_zamowienia=s.id_statusu_zamowienia where nazwa_statusu_zamowienia='anulowane';
+select * from zamowienie z 
+inner join status_zamowienia s on z.id_zamowienia=s.id_statusu_zamowienia 
+where nazwa_statusu_zamowienia='anulowane';
 
 zadanie 4
-select * from klient k inner join adres_klienta a on k.id_klienta=a.klient where miejscowosc='Olsztyn'; 
+select * from klient k
+inner join adres_klienta a on k.id_klienta=a.klient 
+where miejscowosc='Olsztyn'; 
 
 zadanie 5
+select distinct(j.nazwa) from jednostka_miary j
+left join stan_magazynowy sm on sm.jm=j.id_jednostki
+where j.id_jednostki not in (select distinct jm from stan_magazynowy);
 
 
 zadanie 6
-select z.numer_zamowienia, nazwa_towaru, p.ilosc, p.cena from zamowienie z inner join pozycja_zamowienia p on z.id_zamowienia=p.zamowienie inner join towar t on p.towar=t.id_towaru where year(z.data_zamowienia)=2018;
+select z.numer_zamowienia, nazwa_towaru, p.ilosc, p.cena from zamowienie z 
+inner join pozycja_zamowienia p on z.id_zamowienia=p.zamowienie 
+inner join towar t on p.towar=t.id_towaru 
+where year(z.data_zamowienia)=2018;
 
 zadanie 7
+create table towar_full_info as select t.nazwa_towaru,t.cena_zakupu,k.nazwa_kategori,jm.nazwa from kategoria k
+inner join towar t on t.kategoria=k.id_kategori
+inner join stan_magazynowy sm on sm.towar-t.id_towaru
+inner join jednostka_miary jm on jm.id_jednostki-sm.jm
 
 
-zadanie 98
-select * from pozycja_zamowienia p inner join zamowienie z on p.zamowienie=z.id_zamowienia order by data_zamowienia asc limit 10;
+zadanie 8
+select * from pozycja_zamowienia p 
+inner join zamowienie z on p.zamowienie=z.id_zamowienia 
+order by data_zamowienia asc limit 10;
 
 zadanie 9
-select * from zamowienie z inner join status_zamowienia s on z.status_zamowienia=s.id_statusu_zamowienia where nazwa_statusu_zamowienia!='zrealizowane';
+select * from zamowienie z
+inner join status_zamowienia s on z.status_zamowienia=s.id_statusu_zamowienia
+where nazwa_statusu_zamowienia!='zrealizowane';
 
 zadanie 10
 select * from adres_klienta where kod like '__-___';
