@@ -1,45 +1,66 @@
 zadanie 1
-select imie, nazwisko, data_urodzenia from pracownik;
-
-zadanie 2
-selectselect imie, nazwisko, year(now())- year(data_urodzenia) AS wiek_w_latach from pracownik;
-
-zadanie 3
-select d.nazwa, count(p.dzial) from pracownik p
-inner join dzial d on p.dzial=d.id_dzialu
+select d.nazwa,max(p.pensja),min(p.pensja),avg(p.pensja) from pracownik p
+inner join dzial d on d.id_dzialu=p.dzial
 group by d.nazwa;
 
+zadanie 2
+select k.pelna_nazwa,sum(pz.cena*pz.ilosc) from klient k
+inner join zamowienie z on z.klient=k.id_klienta
+inner join pozycja_zamowienia pz on pz.zamowienie=z.id_zamowienia
+group by k.pelna_nazwa
+order by sum(pz.cena*pz.ilosc) desc limit 10;
+
+zadanie 3
+select year(z.data_zamowienia),sum(pz.cena*pz.ilosc) from zamowienie z
+inner join pozycja_zamowienia pz on pz.zamowienie=z.id_zamowienia
+group by year(z.data_zamowienia)
+order by sum(pz.cena*pz.ilosc) DESC;
+
 zadanie 4
-select k.nazwa_kategori, count(t.kategoria) from kategoria k
-inner join towar t on k.id_kategori=t.kategoria
-group by k.nazwa_kategori;
+select sum(pz.cena*pz.ilosc) from pozycja_zamowienia pz
+inner  join zamowienie z on z.id_zamowienia=pz.zamowienie
+inner join status_zamowienia sz on sz.id_statusu_zamowienia=z.status_zamowienia
+where sz.id_statusu_zamowienia=6;
 
 zadanie 5
-select k.nazwa_kategori,t.nazwa_towaru from kategoria k
-inner join towar t on t.kategoria=k.id_kategori;
+select ak.miejscowosc,count(z.id_zamowienia),sum(pz.ilosc*pz.cena) from typ_adresu ta
+inner join adres_klienta ak on ak.typ_adresu=ta.id_typu
+inner join klient k on k.id_klienta=ak.klient
+inner join zamowienie z on z.klient=k.id_klienta
+inner join pozycja_zamowienia pz on pz.zamowienie=z.id_zamowienia
+inner join status_zamowienia sz on sz.id_statusu_zamowienia=z.status_zamowienia
+where ta.id_typu=1
+group by ak.miejscowosc
+;
 
 zadanie 6
-select id_pracownika, imie, nazwisko, ROUND(avg(pensja),2) AS srednia_pensja 
-from pracownik group by id_pracownika;
+select sum((pz.cena-t.cena_zakupu)*pz.ilosc) from stan_magazynowy sm
+inner join towar t on t.id_towaru=sm.towar
+inner join pozycja_zamowienia pz on pz.towar=t.id_towaru
+inner join zamowienie z on z.id_zamowienia=pz.zamowienie
+inner join status_zamowienia sz on sz.id_statusu_zamowienia=z.status_zamowienia
+where sz.id_statusu_zamowienia=5;
 
-Zadanie 7
-select id_pracownika, imie, nazwisko, avg(pensja) from pracownik 
-where year(now()) - year(data_zatrudnienia) >= 5
-group by id_pracownika;
+zadanie 7
+select year(z.data_zamowienia),sum((pz.cena-t.cena_zakupu)*pz.ilosc) from stan_magazynowy sm
+inner join towar t on t.id_towaru=sm.towar
+inner join pozycja_zamowienia pz on pz.towar=t.id_towaru
+inner join zamowienie z on z.id_zamowienia=pz.zamowienie
+inner join status_zamowienia sz on sz.id_statusu_zamowienia=z.status_zamowienia
+where sz.id_statusu_zamowienia=5
+group by year(z.data_zamowienia);
 
-Zadanie 8
-select t.nazwa_towaru, count(p.towar) AS ilosc from zamowienie z
-inner join pozycja_zamowienia p on z.id_zamowienia=p.zamowienie
-inner join towar t on p.towar=t.id_towaru group by t.nazwa_towaru 
-order by ilosc desc limit 10;
+zadanie 8
+select k.nazwa_kategori,sum(t.cena_zakupu*sm.ilosc) from kategoria k
+inner join towar t on t.kategoria=k.id_kategori
+inner join stan_magazynowy sm on sm.towar=t.id_towaru
+group by k.nazwa_kategori;
 
-Zadanie 9
-select z.numer_zamowienia, sum(p.ilosc*p.cena) from zamowienie z 
-inner join pozycja_zamowienia p on z.id_zamowienia=p.zamowienie 
-where year(data_zamowienia)=2017 and month(data_zamowienia) between 1 and 3 group by z.numer_zamowienia;
+zadanie 9
+select monthname(data_urodzenia) as miesiac,count(monthname(data_urodzenia)) from pracownik
+group by month(data_urodzenia),miesiac
+order by month(data_urodzenia);
 
 zadanie 10
-select p.imie, p.nazwisko, sum(pz.ilosc*pz.cena) AS suma_wartosci from pracownik p 
-inner join zamowienie z on p.id_pracownika=z.pracownik_id_pracownika
-inner join pozycja_zamowienia pz on z.id_zamowienia=pz.zamowienie
-group by id_pracownika order by suma_wartosci desc;
+
+select imie,nazwisko,PERIOD_DIFF(date_format(curdate(), '%Y%m'),date_format(p.data_zatrudnienia, '%Y%m'))*pensja as koszt from pracownik p;
