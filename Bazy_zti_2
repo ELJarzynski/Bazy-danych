@@ -11,7 +11,7 @@ zadanie 4
 select * from klient k inner join adres_klienta a on k.id_klienta=a.klient where miejscowosc='Olsztyn'; 
 
 zadanie 5
-select  distinct(j.nazwa) from jednostka_miary j left join stan_magazynowy s on s.jm=j.id_jednostki;  POPRAW
+
 
 zadanie 6
 select z.numer_zamowienia, nazwa_towaru, p.ilosc, p.cena from zamowienie z inner join pozycja_zamowienia p on z.id_zamowienia=p.zamowienie inner join towar t on p.towar=t.id_towaru where year(z.data_zamowienia)=2018;
