@@ -28,11 +28,17 @@ select idKreatury from kreatura where idKreatury not in
 where idKreatury is not NULL);
 
 Zadanie 4
-select k.nazwa, z.nazwa from kreatura k natural join ekwipunek e inner join zasob z on e.idzasobu=z.idzasobu where year(dataur) between 1670 and 1680 order by z.nazwa;
+select k.nazwa, z.nazwa from kreatura k natural join ekwipunek e 
+inner join zasob z on e.idzasobu=z.idzasobu 
+where year(dataur) between 1670 and 1680 order by z.nazwa;
 
-select k.nazwa from kreatura k inner join ekwipunek e on k.idkreatury=e.idkreatury inner join zasob z on e.idzasobu=z.idzasobu where z.rodzaj='jedzenie' order by k.dataur asc limit 5;
+select k.nazwa from kreatura k
+inner join ekwipunek e on k.idkreatury=e.idkreatury 
+inner join zasob z on e.idzasobu=z.idzasobu where z.rodzaj='jedzenie' 
+order by k.dataur asc limit 5;
 
-select k.nazwa, k2.nazwa from kreatura k  inner join kreatura k2 on k2.idKreatury - k.idKreatury = 5;
+select k.nazwa, k2.nazwa from kreatura k  
+inner join kreatura k2 on k2.idKreatury - k.idKreatury = 5;
 
 Zadanie 5
 select k.rodzaj, sum(e.ilosc), avg(e.ilosc*z.waga) from kreatura k 
@@ -47,4 +53,6 @@ inner join zasob z on e.idZasobu=z.idZasobu
 where k.rodzaj not in ('malpa','waz') and e.ilosc < 30
 group by 1;
 
-select k.nazwa, k.rodzaj, k.dataUr from kreatura k, (select rodzaj, min(dataUr) as min, max(dataUr) as max from kreatura group by rodzaj) as pod where k.dataUr=pod.min or k.dataUr=pod.max and k.rodzaj=pod.rodzaj;
+select k.nazwa, k.rodzaj, k.dataUr from kreatura k, 
+(select rodzaj, min(dataUr) as min, max(dataUr) as max from kreatura group by rodzaj) as pod 
+where k.dataUr=pod.min or k.dataUr=pod.max and k.rodzaj=pod.rodzaj;
