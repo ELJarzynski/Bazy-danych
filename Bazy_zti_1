@@ -11,7 +11,7 @@ zadanie 4
 select towar from stan_magazynowy where ilosc>10;
 
 zadanie 5
-select nazwa_towaru from towar where nazwa_towaru like "A%" and "B%" and"C%";
+select * from towar where nazwa_towaru LIKE"A%" or nazwa_towaru LIKE"B%" or nazwa_towaru LIKE"C%'";
 
 zadanie 6
 select nazwa_krotka from klient where czy_firma=0; 
