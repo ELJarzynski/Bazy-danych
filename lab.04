@@ -23,6 +23,7 @@ select nazwa from postac where nazwa like '%A%';
 
 update postac set statek="kawka" where nazwa LIKE '%A%';
 update statek set max_ladownosc=max_ladownosc*0.7 where year(data_wodowania) between 1000 and 1099;
+alter table postac modify wiek int unsigned check(wiek<1000);
 
 #Zadanie 4
 insert into postac values(22,"Loko",default,1100-03-01, 59, default,default,12345678981)
