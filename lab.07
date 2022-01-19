@@ -1,4 +1,8 @@
 Zadanie 1
+create table uczestnicy AS Select * From wikingowie.uczestnicy;
+create table etapy_wyprawy AS Select * From wikingowie.etapy_wyprawy;
+create table sektor AS Select * From wikingowie.sektor;
+create table wyprawa AS Select * From wikingowie.wyprawa;
 
 select nazwa from kreatura k left join uczestnicy u on u.id_uczestnika = k.idKreatury 
 where u.id_uczestnika is null;
