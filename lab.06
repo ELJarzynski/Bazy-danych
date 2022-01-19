@@ -47,12 +47,6 @@ inner join zasob z on e.idZasobu=z.idZasobu
 where k.rodzaj not in ('malpa','waz') 
 group by 1 having sum(e.ilosc) < 30;
 
-select k.rodzaj, sum(e.ilosc), avg(e.ilosc*z.waga) from kreatura k 
-inner join ekwipunek e on k.idKreatury = e.idKreatury 
-inner join zasob z on e.idZasobu=z.idZasobu 
-where k.rodzaj not in ('malpa','waz') and e.ilosc < 30
-group by 1;
-
 select k.nazwa, k.rodzaj, k.dataUr from kreatura k, 
 (select rodzaj, min(dataUr) as min, max(dataUr) as max from kreatura group by rodzaj) as pod 
 where k.dataUr=pod.min or k.dataUr=pod.max and k.rodzaj=pod.rodzaj;
