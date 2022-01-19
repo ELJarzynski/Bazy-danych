@@ -1,5 +1,8 @@
 #zadanie 1
-update postac set wiek=88 where nazwa= "Tesciowa";
+create table postac(idpostaci int auto_increment primary key,rodzaj enum('ptak','wiking','kobieta'), data date,wiek int);
+insert into postac values ('Bjorn','wiking','1900-01-01',20),('Drozd','ptak','1919-01-01',1),('Tesciowa','kobieta','1810-01-01',110),('Tesciowa','kobieta','1810-01-01',110);
+
+UPDATE postac SET wiek=88 WHERE nazwa='Tesciowa';
 
 #zadanie 2 
 create table walizka (id_walizki int auto_increment primary key, pojemnosc int unsigned, kolor enum("rozowy","czerwony","teczowy","zolty"), id_wlasciciela int, foreign key (id_wlasciciela) references postac (id_postaci) on delete cascade);
