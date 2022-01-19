@@ -2,11 +2,9 @@
 "%xyz" - nazwa kończy się na
 
 #Zadanie 1
-Create table kreatura select * from wikingowie.kreatura;
-
-Create table zasob select * from wikingowie.zasob;
-
-Create table ekwipunek select * from wikingowie.ekwipunek;
+create table kreatura select * from wikingowie.kreatura;
+create table zasob select * from wikingowie.zasob;
+create table ekwipunek select * from wikingowie.ekwipunek;
 
 select nazwa from zasob where rodzaj='jedzenie';
 
